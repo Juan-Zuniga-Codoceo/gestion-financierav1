@@ -1,0 +1,31 @@
+{{#extend 'main'}}
+  {{#content 'body'}}
+    <form id="budgetForm">
+      <label for="budgetAmount">Presupuesto Inicial:</label>
+      <input type="number" id="budgetAmount" name="budgetAmount" required>
+      <label for="extraIncome">Ingresos Extras:</label>
+      <input type="number" id="extraIncome" name="extraIncome">
+      <button type="submit">Guardar Presupuesto</button>
+    </form>
+    <section id="expensesSection">
+      <h2>Gastos</h2>
+      <form id="expenseForm">
+        <label for="expenseName">Nombre del Gasto:</label>
+        <input type="text" id="expenseName" name="expenseName" required>
+        <label for="expenseType">Tipo de Gasto:</label>
+        <input type="text" id="expenseType" name="expenseType">
+        <label for="expenseAmount">Cantidad:</label>
+        <input type="number" id="expenseAmount" name="expenseAmount" required>
+        <label for="expenseDate">Fecha:</label>
+        <input type="date" id="expenseDate" name="expenseDate">
+        <label for="expenseComment">Comentario:</label>
+        <textarea id="expenseComment" name="expenseComment"></textarea>
+        <button type="submit">Agregar Gasto</button>
+      </form>
+      <div id="expensesList">
+        {{!-- Aquí se mostrarán los gastos --}}
+      </div>
+    </section>
+    <script src="/script.js"></script>
+  {{/content}}
+{{/extend}}

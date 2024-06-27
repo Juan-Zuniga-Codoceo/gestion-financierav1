@@ -1,0 +1,14 @@
+{{#extend 'main'}}
+  {{#content 'body'}}
+    <form id="profileForm">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="password">Nueva Contraseña:</label>
+      <input type="password" id="password" name="password">
+      <label for="profileImage">Nueva Imagen de Perfil:</label>
+      <input type="file" id="profileImage" name="profileImage">
+      <button type="submit">Actualizar Perfil</button>
+    </form>
+    <script src="/script.js"></script>
+  {{/content}}
+{{/extend}}
