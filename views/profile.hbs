@@ -1,5 +1,21 @@
-{{#extend 'main'}}
-  {{#content 'body'}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil - Gestión Financiera</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Perfil de Usuario</h1>
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/budget">Presupuesto</a>
+      <a href="/auth/logout">Cerrar Sesión</a>
+    </nav>
+  </header>
+  <main>
     <form id="profileForm">
       <label for="name">Nombre:</label>
       <input type="text" id="name" name="name" required>
@@ -10,5 +26,6 @@
       <button type="submit">Actualizar Perfil</button>
     </form>
     <script src="/script.js"></script>
-  {{/content}}
-{{/extend}}
+  </main>
+</body>
+</html>
