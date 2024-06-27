@@ -4,7 +4,7 @@ const authMiddleware = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-router.get('/profile', authMiddleware, (req, res) => res.render('profile'));
+router.get('/profile', authMiddleware, (req, res) => res.render('profile', { title: 'Perfil' }));
 router.put('/profile', authMiddleware, userController.updateProfile);
 
 module.exports = router;

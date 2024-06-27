@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
 
         if (response.ok) {
-          localStorage.setItem('token', data.token);  // Guardar el token en localStorage
+          localStorage.setItem('token', data.token);
           window.location.href = '/user/profile';
         } else {
           alert('Error: ' + data.message);
@@ -162,6 +162,25 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         console.error('Error:', error);
       }
+    });
+  }
+
+  // Verificar si el token se envía correctamente para rutas protegidas
+  const token = localStorage.getItem('token');
+  if (token) {
+    fetch('/user/profile', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+      }
+    }).then(response => {
+      if (response.status === 401) {
+        alert('Acceso denegado. No se proporcionó un token o el token es inválido.');
+      } else {
+        response.text().then(text => console.log(text));
+      }
+    }).catch(error => {
+      console.error('Error:', error);
     });
   }
 });

@@ -5,13 +5,22 @@ const userModel = require('../models/userModel');
 const register = async (req, res) => {
   const { name, email, password } = req.body;
   const profileImage = req.files ? req.files.profileImage.name : null;
-  const hashedPassword = await bcrypt.hash(password, 10);
 
   try {
+    // Verificar si el correo ya existe
+    console.log('Verificando correo:', email);
+    const existingUser = await userModel.findUserByEmail(email);
+    console.log('Verificación de correo:', existingUser);
+    if (existingUser) {
+      return res.status(400).json({ message: 'El correo electrónico ya está registrado.' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
     const user = await userModel.createUser({ name, email, password: hashedPassword, profileImage });
+    console.log('Usuario creado:', user);
     res.status(201).json({ message: 'Usuario registrado exitosamente. Por favor, inicie sesión.' });
   } catch (error) {
-    console.error(error);
+    console.error('Error al registrar el usuario:', error);
     res.status(500).json({ message: 'Error al registrar el usuario' });
   }
 };
